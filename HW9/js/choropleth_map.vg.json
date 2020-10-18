@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "US Suicide Rates by State 2020",
+  "title": "US Suicide Rates by State 2018",
   "width": 800,
   "height": 600,
   "data": {
