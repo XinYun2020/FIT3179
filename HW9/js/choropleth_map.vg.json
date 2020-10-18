@@ -4,52 +4,39 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/js/america.topojson",
-    "format": {
-      "type": "topojson",
-      "feature": "america"
-    }
+    "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/js/ne_110m_admin_1_states_provinces.json",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}
   },
   "transform": [
     {
-      "lookup": "properties.Name",
+      "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/data/usSuicide2020.csv"
+          "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/data/usSuicide2020(1).csv"
         },
         "key": "State",
-        "fields": [
-          "suicideRate"
-        ]
+        "fields": ["suicideRate"]
       }
     }
   ],
-  "projection": {
-    "type": "equirectangular"
-  },
-  "mark": {
-    "type": "geoshape"
-  },
+  "projection": {"type": "albersUsa"},
+  "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
       "field": "suicideRate",
-      "type": "quantitative",
-      "scale": {
-        "type": "linear"
-      }
+      "type": "quantitative"
     },
     "tooltip": [
       {
-        "field": "properties.Name",
-        "type": "nominal",
-        "title": "america"
-      },
+      "field": "properties.name",
+      "type": "nominal", 
+      "title": "State"},
       {
-        "field": "Count",
-        "type": "quantitative"
-      }
+        "field": "suicideRate",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Suicide Rate"
+    }
     ]
-  },
-  "config": {}
+  }
 }
-
