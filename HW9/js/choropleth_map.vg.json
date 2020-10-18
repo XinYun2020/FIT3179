@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "US Suicide Rates by State 2020",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/js/america.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "america"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.Name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/HW9/data/usSuicide2020.csv"
+        },
+        "key": "State",
+        "fields": [
+          "suicideRate"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular"
+  },
+  "mark": {
+    "type": "geoshape"
+  },
+  "encoding": {
+    "color": {
+      "field": "suicideRate",
+      "type": "quantitative",
+      "scale": {
+        "type": "linear"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.Name",
+        "type": "nominal",
+        "title": "america"
+      },
+      {
+        "field": "Count",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "config": {}
+}
+
