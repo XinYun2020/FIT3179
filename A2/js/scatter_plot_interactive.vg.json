@@ -13,7 +13,7 @@
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 100000000,
+        "max": 30000000,
         "step": 1000000,
         "name": "Minimum Population: "
       }
@@ -26,7 +26,11 @@
   "transform": [
     {"filter": "datum.Deaths > 0"},
     {"filter": "datum.Population > Population_Above"},
-    {"filter": "datum.Year==Select_Years"}
+    {"filter": "datum.Year==Select_Years"},
+    {
+      "calculate": "datum.Death/datum.Population * 100000",
+      "as": "Death per 100,000 Population"
+    }
     
   ],
   "encoding": {
@@ -49,7 +53,7 @@
       "selection": {
         "state_highlight": {
           "type": "multi",
-          "fields": ["Continent"],
+          "fields": ["State"],
           "bind": "legend"
         }
       },
@@ -60,7 +64,7 @@
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "domain": [100000, 1000000, 5000000, 10000000, 50000000],
+            "domain": [1000000, 5000000,10000000,20000000,30000000],
             "range": [10, 50, 150, 200, 300, 400]
           },
           "legend": {"format": ".1s"}
@@ -81,7 +85,7 @@
           {"field": "Deaths", "type": "quantitative", "format": ","},
           {"field": "Population", "type": "quantitative", "format": ","},
           {
-            "field": "Death per 100,000 Population",
+            "field": "Death per 100,000 Populationn",
             "type": "quantitative",
             "format": ".2f"
           }
