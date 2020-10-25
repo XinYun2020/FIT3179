@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 300,
-  "height": 250,
+  "width": 500,
+  "height": 500,
   "title": "U.S. Overdoses Death. by State (1999-2014)",
   "data": {
     "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/overdoses2.csv"
@@ -20,7 +20,13 @@
     },
     {
       "name": "Select_Years",
-      "bind": {"input": "range", "min": 1999, "max": 2014, "step": 1, "name": "Year"}
+      "bind": {
+        "input": "range",
+        "min": 1999,
+        "max": 2014,
+        "step": 1,
+        "name": "Year"
+      }
     }
   ],
   "transform": [
@@ -31,7 +37,6 @@
       "calculate": "datum.Death/datum.Population * 100000",
       "as": "Death per 100,000 Population"
     }
-    
   ],
   "encoding": {
     "x": {
@@ -64,22 +69,18 @@
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "domain": [1000000, 5000000,10000000,20000000,30000000],
+            "domain": [1000000, 5000000, 10000000, 20000000, 30000000],
             "range": [10, 50, 150, 200, 300, 400]
           },
           "legend": {"format": ".1s"}
         },
-        "color": {
-          "field": "State",
-          "type": "nominal",
-          "scale": {
-            
-          }
-        },
+        "color": {"field": "State", "type": "nominal", "scale": {}},
         "opacity": {
           "condition": {"selection": "state_highlight", "value": 0.6},
           "value": 0.2
         },
+        
+        "text": {"field": "State", "type": "nominal"},
         "tooltip": [
           {"field": "State", "type": "nominal"},
           {"field": "Deaths", "type": "quantitative", "format": ","},
@@ -105,8 +106,13 @@
         "text": {"field": "State", "type": "nominal"},
         "color": {"value": "black"},
         "opacity": {
+          "condition": {
+            "test": "datum['State'] == 'California' || datum['State'] == 'New York' || datum['State'] == 'Texas' || datum['State'] == 'Florida'",
+            "value": 1
+          },
           "value": 0
         },
+
         "tooltip": [
           {"field": "State", "type": "nominal"},
           {"field": "Deaths", "type": "quantitative", "format": ","},
