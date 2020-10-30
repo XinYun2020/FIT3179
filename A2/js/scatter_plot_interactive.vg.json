@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": 500,
-  "height": 500,
+  "height": 250,
   "title": "U.S. Overdoses Death. by State (1999-2014)",
   "data": {
     "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/overdoses2.csv"
