@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {"url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/gender_overdoses.csv"},
+  "background":"#282828",
+  "transform": [
+    {"calculate": "datum.sex == 2 ? 'Female' : 'Male'", "as": "gender"}
+  ],
+  "facet": {"field": "year", "type": "ordinal","title":null,"titleColor":"white"},
+  "width": {"step": 12},
+  "spec": {
+    "encoding": {
+      "y": {
+        "aggregate": "sum",
+        "field": "people",
+        "type": "quantitative",
+        "axis": {"title": "death/0.1Million", "grid": false,"titleColor":"white"}
+      },
+      "x": {"field": "gender", "type": "nominal", "axis": {"title": ""}}
+    },
+    "layer": [
+      {
+        "mark": "bar",
+        "encoding": {
+          "color": {
+            "field": "gender",
+            "type": "nominal",
+            "scale": {"range": ["#fc9272", "#9ecae1"]}
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "dx": -5,
+          "angle": -90,
+          "baseline": "middle",
+          "align": "right"
+          
+        },
+        "encoding": {
+          "text": {
+            "aggregate": "sum",
+            "field": "people",
+            "type": "quantitative",
+            "format": ".3s"
+            
+          },
+          "color":{"value": "white"},
+        "tooltip": [
+            {"field": "year", "type": "nominal","title":"Year"},
+            {"field": "people", "type": "quantitative", "title": "Death per 0.1Million people","format":".2f"}]
+        }
+      }
+    ]
+  },
+  "config": {
+    "legend":{"disable": true},
+    "view": {"stroke": "transparent"},
+    "facet": {"spacing": 2},
+    "axis": {"domainWidth": 1,
+      "domainColor": "white",
+      "tickColor": "white",
+      "labelColor": "white",
+      "gridColor": "white"
+      }
+  }
+
+}
