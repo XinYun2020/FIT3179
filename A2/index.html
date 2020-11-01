@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>North America Overdose Death by State</title>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-  <!-- Import vega-embed -->
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <!-- Import pure.css -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <!-- custom style -->
-  <style>
+	<head>
+		<title>North America Overdose Death by State</title>
+		<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+		<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+		<!-- Import vega-embed -->
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+		<!-- Import pure.css -->
+		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<!-- Google font -->
+				<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+					<!-- custom style -->
+					<style>
     *{
       font-family: 'Source Sans Pro', sans-serif;
     }
@@ -74,122 +73,87 @@
       margin-right: auto;
     }
   </style>
-</head>
-<body>
-
- <div class="page">
-
-   <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1>Opioid Overdose Death in <span style="color:red;">United State</span></h1>
-
-        <img src="https://XinYun2020.github.io/FIT3179/A2/data/overdose.jpg" alt="overdose_jpg" width="275" height="150" class="pic-centre">
-        <p style="text-align:center;color:white;">description on the data..</p>
-        <p></p>
-      </div>
-    </div>
-  <!-- end pure grid group -->
-
-  <!-- pure grid group 2 -->
-     <div class="pure-g">
-         <div class="pure-u-1-1"> 
-             <h2> Overdose Death Rate Across United State in Year 2014</h2>
-             <div style="text-align:center;" id="vis1" class="vis-container"></div>
-             <p style="text-align:center;color:white;">The dataset of visualisation is a map and dataset type is spacial-geometric, the number of death per 100,000 persons in each state in USA.. </p>
-
-      </div>
-    </div>  
-  <!-- end pure grid group 2 -->
-
-
-
-    <!-- pure grid group 3 -->
-    <div class="pure-g">
-
-        <div class="pure-u-1-3">
-          <div class="description description-left">
-            <h2 style="color:white;background-color: #282828;">Scatter plot</h2>
-            <p style="color:white;">Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
-          </div>
-        </div>
-        <div class="pure-u-2-3">
-          <div id="vis2"  class="vis-container"></div>
-        </div>
-      
-    </div>
-    <!-- end pure grid group 3 -->
-
-
-  <!-- pure grid group 2 -->
-     <div class="pure-g">
-         <div class="pure-u-1-1"> 
-             <h2 style="text-align:center;background-color:grey;color:white;"> Overdose Death Rate Across United State in Year 2014</h2>
-             <p style="text-align:center;color:white;">The dataset of visualisation is a map and dataset type is spacial-geometric, the number of death per 100,000 persons in each state in USA.. </p>
-
-      </div>
-    </div>  
-  <!-- end pure grid group 2 -->
-
-
-
-    <!-- pure grid group 3 -->
-    <div class="pure-g">
-
-        <div class="pure-u-1-3">
-          <div class="description description-left">
-            <h2 style="color:white;background-color: #282828;">Scatter plot</h2>
-            <p style="color:white;">Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
-          </div>
-        </div>
-        <div class="pure-u-2-3">
-          <div id="vis3"  class="vis-container"></div>
-        </div>
-      
-    </div>
-    <!-- end pure grid group 3 -->
-
-
-
-
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-3">
-        <div class="description description-left">
-          <h2 style="color:white;background-color: #282828;">double bar chart for prescripted</h2>
-          <p style="color:white;">Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
-        </div>
-      </div>
-
-      <div class="pure-u-1-3">
-        <div id="vis4"  class="vis-container"></div>
-      </div>
-    
-    </div>
-
-
-    <!-- end pure grid group -->
-  
-    <div class="pure-g">
-
-      <div class="pure-u-1-1 small-font">
-
-        <p style="color:white;text-align:right;">This visualisation is created by <a href="https://github.com/XinYun2020" target="_blank">Xinyun Zhang</a>. The datasource is <a href="#"" target="_blank">some data repository online</href>.</p>
-
-      </div>
-    </div>
-  
-
-  </div> <!-- end page -->
-
-
-   
-<script type="text/javascript">
+				</head>
+				<body>
+					<div class="page">
+						<!-- pure grid group -->
+						<div class="pure-g">
+							<div class="pure-u-1-1">
+								<h1>Opioid Overdose Death in 
+									<span style="color:red;">United State</span>
+								</h1>
+								<img src="https://XinYun2020.github.io/FIT3179/A2/data/overdose.jpg" alt="overdose_jpg" width="275" height="150" class="pic-centre">
+									<p style="text-align:center;color:white;">description on the data..</p>
+									<p></p>
+								</div>
+							</div>
+							<!-- end pure grid group -->
+							<!-- pure grid group 2 -->
+							<div class="pure-g">
+								<div class="pure-u-1-1">
+									<h2> Overdose Death Rate Across United State in Year 2014</h2>
+									<p style="text-align:center;color:white;">The dataset of visualisation is a map and dataset type is spacial-geometric, the number of death per 100,000 persons in each state in USA.. </p>
+									<div style="text-align:center;" id="vis1" class="vis-container"></div>
+								</div>
+							</div>
+							<!-- end pure grid group 2 -->
+							<!-- pure grid group 3 -->
+							<div class="pure-g">
+								<div class="pure-u-1-3">
+									<div class="description description-left">
+										<h2 style="color:white;background-color: #282828;">U.S. Overdose Death by State (1999-2014)</h2>
+										<p style="color:white;">Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+									</div>
+								</div>
+								<div class="pure-u-2-3">
+									<div id="vis2"  class="vis-container"></div>
+								</div>
+							</div>
+							<!-- end pure grid group 3 -->
+							<!-- pure grid group  -->
+							<div class="pure-g">
+								<div class="pure-u-1-1">
+									<h2 style="text-align:center;background-color:grey;color:white;"> Opioid Overdose Deaths by Gender over Year</h2>
+									<p style="text-align:center;color:white;">The dataset of visualisation is a map and dataset type is spacial-geometric, the number of death per 100,000 persons in each state in USA.. </p>
+									<div class="pure-u-2-3">
+										<div id="vis3"  class="vis-container"></div>
+									</div>
+								</div>
+							</div>
+							<!-- end pure grid group  -->
+							<h2 style="text-align:center;background-color:grey;color:white;"> Opioid Overdose Deaths by Gender over Year</h2>
+							<p style="text-align:center;color:white;">The dataset of visualisation is a map and dataset type is spacial-geometric, the number of death per 100,000 persons in each state in USA.. </p>
+							<div class="pure-u-2-3">
+								<div id="vis4"  class="vis-container"></div>
+							</div>
+							<!-- pure grid group  -->
+							<div class="pure-g"></div>
+							<!-- end pure grid group  -->
+							<div class="pure-g">
+								<div class="pure-u-1-1 small-font">
+									<p style="color:white;text-align:left;">This visualisation is created by 
+										<a href="https://github.com/XinYun2020" target="_blank">Xinyun Zhang</a>.
+									</p>
+                                    <p style="color:white;text-align:left;">Kaggle datasource from 
+										<a href="https://www.kaggle.com/apryor6/us-opiate-prescriptions?select=overdoses.csv" target="_blank">https://www.kaggle.com/apryor6/us-opiate-prescriptions?select=overdoses.csv
+										</a> and <a href="https://www.kaggle.com/jazzang/opioid-overdose-deaths" target="_blank">https://www.kaggle.com/jazzang/opioid-overdose-deaths
+										</a></href>.
+									</p>
+                                    <p style="color:white;text-align:left;">Another datasource from 
+										<a href="https://wonder.cdc.gov/controller/datarequest/D77;jsessionid=B736214A90C9521520B2CEA62E2B" target="_blank">https://wonder.cdc.gov/controller/datarequest/D77;jsessionid=B736214A90C9521520B2CEA62E2B
+										</a></href> dataset tidy up by <a href="https://www.kff.org/" target="_blank">https://www.kff.org/
+										</a>.
+									</p>
+                                    
+								</div>
+							</div>
+						</div>
+						<!-- end page -->
+						<script type="text/javascript">
   var specVis1 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/choropleth_map.vg.json";
   var specVis2 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/scatter_plot_interactive.vg.json";
-  var specVis3 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/scatter_plot_interactive.vg.json";
+  var specVis3 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/group_bar_chart.json";
   var specVis4 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/scatter_plot_interactive.vg.json";
-  var specVis5 = "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/js/scatter_plot_interactive.vg.json";
 
 
   vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
@@ -208,10 +172,7 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  vegaEmbed('#vis5', specVis5, {"actions": false}).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
 
 </script>
-</body>
-</html>
+					</body>
+				</html>
