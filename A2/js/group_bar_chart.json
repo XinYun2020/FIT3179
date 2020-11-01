@@ -2,6 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data": {"url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/gender_overdoses.csv"},
   "background":"#282828",
+  "width":"container",
+  "height": 400,
   "transform": [
     {"calculate": "datum.sex == 2 ? 'Female' : 'Male'", "as": "gender"}
   ],
