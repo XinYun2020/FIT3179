@@ -1,25 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": 500,
-  "height": 250,
-  "title": "U.S. Overdoses Death. by State (1999-2014)",
+  "height": 300,
+  "background":"#282828",
   "data": {
     "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/overdoses2.csv"
   },
   "params": [
     {
-      "name": "Population_Above",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 30000000,
-        "step": 1000000,
-        "name": "Minimum Population: "
-      }
-    },
-    {
       "name": "Select_Years",
+      "value": 1999,
       "bind": {
         "input": "range",
         "min": 1999,
@@ -30,8 +20,8 @@
     }
   ],
   "transform": [
+    {"filter": "datum.State == 'California'||'New York'"},
     {"filter": "datum.Deaths > 0"},
-    {"filter": "datum.Population > Population_Above"},
     {"filter": "datum.Year==Select_Years"},
     {
       "calculate": "datum.Death/datum.Population * 100000",
@@ -69,14 +59,14 @@
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "domain": [1000000, 5000000, 10000000, 20000000, 30000000],
-            "range": [10, 50, 150, 200, 300, 400]
+            "domain": [1000000, 2000000, 5000000, 10000000, 20000000],
+            "range": [10, 50, 100, 150, 300, 1000]
           },
           "legend": {"format": ".1s"}
         },
         "color": {"field": "State", "type": "nominal", "scale": {}},
         "opacity": {
-          "condition": {"selection": "state_highlight", "value": 0.6},
+          "condition": {"selection": "state_highlight", "value": 0.8},
           "value": 0.2
         },
         
@@ -104,10 +94,10 @@
       },
       "encoding": {
         "text": {"field": "State", "type": "nominal"},
-        "color": {"value": "black"},
+        "color": {"value": "white"},
         "opacity": {
           "condition": {
-            "test": "datum['State'] == 'California' || datum['State'] == 'New York' || datum['State'] == 'Texas' || datum['State'] == 'Florida'",
+            "test": "datum['State'] == 'California' || datum['State'] == 'New York' || datum['State'] == 'Texas' || datum['State'] == 'Florida'|| datum['State'] == 'Ohio'",
             "value": 1
           },
           "value": 0
@@ -125,5 +115,18 @@
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "legend":{"labelColor":"white","titleColor": "white","disable": true},
+    "view": {
+      "stroke": "transparent"
+     },
+    "axis": {"domainWidth": 1,
+      "domainColor": "white",
+      "tickColor": "white",
+      "labelColor": "white",
+      "grid": false,
+      "titleColor": "white"
+      }
+  }
 }
