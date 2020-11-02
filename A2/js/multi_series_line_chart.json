@@ -3,7 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/race_overdoses.csv"
   },
-  "width":"container",
+  "width":800,
   "height": 400,
   "background":"#282828",
   "params": [
