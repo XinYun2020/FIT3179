@@ -1,0 +1,122 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/XinYun2020/FIT3179/main/A2/data/race_overdoses.csv"
+  },
+  "width":"container",
+  "height": 400,
+  "background":"#282828",
+  "params": [
+    {
+      "name": "Race_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "TOTAL",
+          "  White (Non-Hispanic)",
+          "  Black (Non-Hispanic)",
+          "  Asian or Pacific Islander (Non-Hispanic)",
+          "  Hispanic",
+          "  American Indian or Alaska Native (Non-Hispanic)"
+        ],
+        "labels": [
+          "Show All",
+          "TOTAL",
+          "  White (Non-Hispanic)",
+          "  Black (Non-Hispanic)",
+          "  Asian or Pacific Islander (Non-Hispanic)",
+          "  Hispanic",
+          "  American Indian or Alaska Native (Non-Hispanic)"
+        ],
+        "name": "Race Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "Race_selection == null || datum.symbol == Race_selection"}
+  ],
+  "layer": [
+    {
+      "encoding": {
+        "x": {"field": "date", "type": "temporal","title":"Year"},
+        "y": {"field": "rate", 
+              "type": "quantitative",
+              "title": "Death per 0.1 Million people"},
+        "color": {"field": "symbol", "type": "nominal","title":"Race"},
+        "tooltip": [
+         {"field": "date", "type": "temporal","title":"Year","axis":{"format":"%Y"}}]
+         
+        
+      },
+      "layer": [
+        {"mark": "line"},
+        {
+          "selection": {
+            "label": {
+              "type": "single",
+              "nearest": true,
+              "on": "mouseover",
+              "encodings": ["x"],
+              "empty": "none"
+            }
+          },
+          "mark": "point",
+          "encoding": {
+            "opacity": {
+              "condition": {"selection": "label", "value": 1},
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "transform": [{"filter": {"selection": "label"}}],
+      "layer": [
+
+        {
+          "encoding": {
+            "text": {"type": "quantitative", "field": "rate"},
+            "x": {"type": "temporal", "field": "date"},
+            "y": {"type": "quantitative", "field": "rate"}
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "text",
+                "stroke": "white",
+                "strokeWidth": 2,
+                "align": "left",
+                "dx": 5,
+                "dy": -5
+              }
+            },
+            {
+              "mark": {"type": "text", "align": "left", "dx": 5, "dy": -5},
+              "encoding": {
+                "color": {"type": "nominal", "field": "symbol"}
+                
+              }
+            }
+          ]
+        }
+      ]
+    }
+    
+    
+  ],
+  "config": {"axis": {"grid": false},
+            "view": {"stroke": "transparent"},
+            "axis": {"domainWidth": 1,
+      "domainColor": "white",
+      "tickColor": "white",
+      "labelColor": "white",
+      "grid": false,
+      "titleColor": "white"
+      
+      },
+      "legend":{"labelColor":"white","titleColor": "white"}
+
+            }
+}
